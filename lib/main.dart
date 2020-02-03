@@ -54,17 +54,18 @@ class GDG100MetersTimerAppState extends State<GDG100MetersTimerApp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   CustomTextContainer(
-                      label: 'HRS', value: hours.toString().padLeft(2, '0')),
+                      timing: 'HOURS', value: hours.toString().padLeft(2, '0')),
                   CustomTextContainer(
-                      label: 'MIN', value: minutes.toString().padLeft(2, '0')),
+                      timing: 'MIN', value: minutes.toString().padLeft(2, '0')),
                   CustomTextContainer(
-                      label: 'SEC', value: seconds.toString().padLeft(2, '0')),
+                      timing: 'SEC', value: seconds.toString().padLeft(2, '0')),
                 ],
               ),
               Container(
                 margin: EdgeInsets.only(top: 20),
-                child: RaisedButton(
-                  child: Text(isActive ? 'STOP' : 'START'),
+                child: FlatButton(
+                  color: Colors.blueGrey,
+                  child: Text(isActive ? 'STOP' : 'START TIMER', style: TextStyle(color: Colors.white),),
                   onPressed: () {
                     setState(() {
                       isActive = !isActive;
@@ -81,9 +82,9 @@ class GDG100MetersTimerAppState extends State<GDG100MetersTimerApp> {
 }
 
 class CustomTextContainer extends StatelessWidget {
-  CustomTextContainer({this.label, this.value});
+  CustomTextContainer({this.timing, this.value});
 
-  final String label;
+  final String timing;
   final String value;
 
   @override
@@ -93,7 +94,7 @@ class CustomTextContainer extends StatelessWidget {
       padding: EdgeInsets.all(20),
       decoration: new BoxDecoration(
         borderRadius: new BorderRadius.circular(10),
-        color: Colors.black87,
+        color: Colors.black,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -107,9 +108,9 @@ class CustomTextContainer extends StatelessWidget {
             ),
           ),
           Text(
-            '$label',
+            '$timing',
             style: TextStyle(
-              color: Colors.white70,
+              color: Colors.white60,
             ),
           )
         ],
