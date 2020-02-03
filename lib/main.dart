@@ -40,6 +40,7 @@ class GDG100MetersTimerAppState extends State<GDG100MetersTimerApp> {
     int hours = secondsPassed ~/ (60 * 60);
 
     return new MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Welcome to GDG 100 Meters',
       home: Scaffold(
         appBar: AppBar(
